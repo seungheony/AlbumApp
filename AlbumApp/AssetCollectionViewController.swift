@@ -11,6 +11,7 @@ private let reuseIdentifier = "Cell"
 
 class AssetCollectionViewController: UICollectionViewController {
     
+    // 각 행과 열의 간격 설정
     let interval: CGFloat = 4
     
     override func viewDidLoad() {
@@ -89,9 +90,9 @@ class AssetCollectionViewController: UICollectionViewController {
 
 }
 
-// 마진x, 여백o
 extension AssetCollectionViewController: UICollectionViewDelegateFlowLayout {
     
+    //전체 width에서 두칸의 interval을 빼준 뒤 3을 나눠주어 셀 하나의 width를 구한다.
     func collectionView(_ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -100,14 +101,14 @@ extension AssetCollectionViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: width , height: width )
     }
 
-    //2
+    // 각 가로 행간을 interval로 설정한다.
     func collectionView(_ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
             return interval
     }
 
-    //3
+    // 각 세로 자간을 interval로 설정한다.
     func collectionView(_ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

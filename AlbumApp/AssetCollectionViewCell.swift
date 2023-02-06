@@ -9,6 +9,7 @@ import UIKit
 
 class AssetCollectionViewCell: UICollectionViewCell {
     
+    // 각 이미지의 썸네일
     @IBOutlet weak var thumbnailImage: UIImageView!
     
     override func prepareForReuse() {

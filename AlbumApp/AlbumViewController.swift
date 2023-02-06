@@ -9,6 +9,7 @@ import UIKit
 
 class AlbumViewController: UIViewController {
 
+    // 앨범 리스트를 표시할 UITableView
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
