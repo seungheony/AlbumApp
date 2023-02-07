@@ -37,6 +37,20 @@ class AssetCollectionViewController: UICollectionViewController {
         assetCell.thumbnailImage.contentMode = .scaleAspectFill
         return assetCell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let asset = fetchResults.object(at: indexPath.item)
+        let resource = PHAssetResource.assetResources(for: asset).first
+        let fileName = resource?.originalFilename ?? "File Name Error"
+        let fileSize: String = String(format: "%.1f", (resource?.value(forKey: "fileSize") as? Double ?? 0) / 1048576)
+        
+        let alert = UIAlertController(title: "사진정보", message: "\(fileName)\n\(fileSize)MB", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default) { (action) in
+            
+        })
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension AssetCollectionViewController: UICollectionViewDelegateFlowLayout {
