@@ -25,9 +25,7 @@ class AssetCollectionViewController: UICollectionViewController {
 
     }
 
-    // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return fetchResults.count
     }
 
@@ -35,11 +33,8 @@ class AssetCollectionViewController: UICollectionViewController {
         let assetCell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! AssetCollectionViewCell
         let asset = fetchResults.object(at: indexPath.item)
         
-        assetCell.representedAssetIdentifier = asset.localIdentifier
         imageManager.requestImage(for: asset, targetSize: CGSize(width: 100, height: 100), contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
-            if assetCell.representedAssetIdentifier == asset.localIdentifier {
-                assetCell.thumbnailImage.image = image
-            }
+            assetCell.thumbnailImage.image = image
         })
         assetCell.thumbnailImage.contentMode = .scaleAspectFill
         return assetCell
