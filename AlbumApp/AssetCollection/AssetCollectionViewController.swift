@@ -16,13 +16,11 @@ class AssetCollectionViewController: UICollectionViewController {
     let interval: CGFloat = 4
     
     var fetchResults: PHFetchResult<PHAsset>!
-    var assetCollection: PHAssetCollection!
     let imageManager = PHCachingImageManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
