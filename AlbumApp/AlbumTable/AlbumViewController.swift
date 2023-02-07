@@ -79,6 +79,9 @@ extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         nextVC.navigationItem.title = smartList.object(at: indexPath.row).localizedTitle
+        let collection: PHAssetCollection = smartList.object(at: indexPath.row)
+        
+        nextVC.fetchResults = PHAsset.fetchAssets(in: collection, options: fetchOptions)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
