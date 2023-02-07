@@ -73,6 +73,14 @@ extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier:"assetCollectionVC") as? AssetCollectionViewController else {
+            return
+        }
+        nextVC.navigationItem.title = smartList.object(at: indexPath.row).localizedTitle
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
 }
 
 extension AlbumViewController: PHPhotoLibraryChangeObserver {
