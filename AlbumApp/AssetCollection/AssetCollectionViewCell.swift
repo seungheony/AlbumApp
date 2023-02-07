@@ -11,6 +11,7 @@ class AssetCollectionViewCell: UICollectionViewCell {
     
     // 각 이미지의 썸네일
     @IBOutlet weak var thumbnailImage: UIImageView!
+    var representedAssetIdentifier: String!
     
     override func prepareForReuse() {
         super.prepareForReuse()
