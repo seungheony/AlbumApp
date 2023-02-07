@@ -93,8 +93,8 @@
 		21E3748E2990BDD00029C055 /* AlbumTable */ = {
 			isa = PBXGroup;
 			children = (
-				10806D42298FFB5B00A292EE /* AlbumTableViewCell.swift */,
 				10806D32298EA75300A292EE /* AlbumViewController.swift */,
+				10806D42298FFB5B00A292EE /* AlbumTableViewCell.swift */,
 			);
 			path = AlbumTable;
 			sourceTree = "<group>";
