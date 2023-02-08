@@ -28,6 +28,7 @@ class AlbumViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 85
+        
         PHPhotoLibrary.shared().register(self)
         addAlbums(collection: smartList)
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -63,8 +64,8 @@ extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.numberImagesAlbum.text = String(fetchResults[indexPath.row].count)
         
-        
         guard let asset = fetchResults[indexPath.row].firstObject else {
+            cell.albumThumbnail?.image = nil
             return cell
         }
         
