@@ -20,6 +20,7 @@ class AssetCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        PHPhotoLibrary.shared().register(self)
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 
@@ -76,5 +77,17 @@ extension AssetCollectionViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
             return interval
+    }
+}
+
+extension AssetCollectionViewController: PHPhotoLibraryChangeObserver {
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        if let changes = changeInstance.changeDetails(for: fetchResults) {
+            fetchResults = changes.fetchResultAfterChanges
+        }
+
+        OperationQueue.main.addOperation {
+            self.collectionView.reloadData()
+        }
     }
 }
